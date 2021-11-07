@@ -10,8 +10,9 @@ namespace Sandbox
         [DataRow(new[] { 2, 3, 8 }, new[] { 1, 3, 8 }, new[] { 3, 7, 6 })]
         [DataRow(new[] { 3, 2, 5 }, new[] { 1, 6, 9, 6 }, new[] { 2, 0, 2, 1 })]
         [DataRow(new[] { 2, 5 }, new[] { 9, 9, 9, 6 }, new[] { 1, 0, 0, 2, 1 })]
-        [DataRow(new[] { 2, 5 }, new[] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 9, 6 }, new[] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 2, 1 })]
+        [DataRow(new[] { 2, 5 }, new[] { 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 9, 6 }, new[] { 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 2, 1 })]
         [DataRow(new[] { 9, 9, 9 }, new[] { 9, 9, 9 }, new[] { 1, 9, 9, 8 })]
+        [DataRow(new[] { 9, 9, 0 }, new[] { 1, 0 }, new[] { 1, 0, 0, 0 })]
         [DataTestMethod]
         public void ArrayAdditionShouldSucceed(int[] a, int[] b, int[] expectedOutputArray)
         {
