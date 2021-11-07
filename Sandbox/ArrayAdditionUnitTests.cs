@@ -10,18 +10,20 @@ namespace Sandbox
         [DataRow(new[] { 2, 3, 8 }, new[] { 1, 3, 8 }, new[] { 3, 7, 6 })]
         [DataRow(new[] { 3, 2, 5 }, new[] { 1, 6, 9, 6 }, new[] { 2, 0, 2, 1 })]
         [DataRow(new[] { 2, 5 }, new[] { 9, 9, 9, 6 }, new[] { 1, 0, 0, 2, 1 })]
+        [DataRow(new[] { 2, 5 }, new[] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 9, 6 }, new[] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 2, 1 })]
+        [DataRow(new[] { 9, 9, 9 }, new[] { 9, 9, 9 }, new[] { 1, 9, 9, 8 })]
         [DataTestMethod]
-        public void TestMethod2(int[] a, int[] b, int[] expectedOutputArray)
+        public void ArrayAdditionShouldSucceed(int[] a, int[] b, int[] expectedOutputArray)
         {
-            var finalArray = new List<int>();
+            var aIndex = a.Length - 1;
+            var bIndex = b.Length - 1;
             var carrierDigit = 0;
-            var i = a.Length - 1;
-            var j = b.Length - 1;
+            var finalArray = new List<int>();
 
-            while (j >= 0 || i >= 0)
+            while (bIndex >= 0 || aIndex >= 0)
             {
-                var aValue = 0 <= i ? a[i--] : 0;
-                var bValue = 0 <= j ? b[j--] : 0;
+                var aValue = 0 <= aIndex ? a[aIndex--] : 0;
+                var bValue = 0 <= bIndex ? b[bIndex--] : 0;
 
                 var additionResult = aValue + bValue + carrierDigit;
                 carrierDigit = additionResult / 10;
@@ -35,10 +37,7 @@ namespace Sandbox
 
             finalArray.Reverse();
 
-            var resultArrayCsv = string.Join(",", finalArray);
-            var expectedResultArrayCsv = string.Join(",", expectedOutputArray);
-
-            Assert.IsTrue(resultArrayCsv == expectedResultArrayCsv);
+            Assert.IsTrue(string.Join("", finalArray) == string.Join("", expectedOutputArray));
         }
     }
 }
